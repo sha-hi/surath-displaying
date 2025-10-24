@@ -20,7 +20,7 @@ body {
 
 /* Arabic ayah text */
 #ayah {
-  font-size: clamp(2rem, 10vw, 3rem); /* Automatically adjusts to screen size */
+  font-size: clamp(6.25rem, 10vw, 8.25rem); /* Automatically adjusts to screen size */
   margin: 20px 0;
   color: #000000;
   line-height: 1.6;
