@@ -1,0 +1,73 @@
+body {
+  font-family: "Scheherazade New", serif;
+  background-color: #f7f4ef;
+  text-align: center;
+  padding: 20px;
+  direction: rtl;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Surah name styling */
+#surahName {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: #05545b;
+  margin-bottom: 10px;
+}
+
+/* Arabic ayah text */
+#ayah {
+  font-size: clamp(2rem, 10vw, 3rem); /* Automatically adjusts to screen size */
+  margin: 20px 0;
+  color: #000000;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+  padding: 0 10px;
+  overflow-wrap: break-word;
+}
+
+/* Tajweed and Harakat colors (you can expand later) */
+.tajweed {
+  color: #d62828;
+}
+
+.harakat {
+  color: #1d3557;
+}
+
+/* Button styling */
+button {
+  background-color: #118ab2;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  margin: 10px 5px;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  cursor: pointer;
+  width: 40%;
+  max-width: 200px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #073b4c;
+  transform: scale(1.03);
+}
+
+/* Layout tweaks for smaller screens */
+@media (max-width: 600px) {
+  #ayah {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  button {
+    width: 80%;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quran Tajweed Viewer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+
+    <div id="surahName"></div>
+    <div id="ayah"></div>
+
+    <button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>
+
+    <script>
+      let surahs = [];
+      let currentSurah = 0;
+      let currentAyah = 0;
+
+      // Load ayat data from ayat.json
+      fetch("ayat.json")
+        .then((res) => res.json())
+        .then((data) => {
+          surahs = data.surahs;
+          showAyah();
+        })
+        .catch((err) => {
+          document.getElementById("ayah").innerHTML =
+            "⚠️ Error loading ayat. Please check file paths.";
+          console.error(err);
+        });
+
+      function showAyah() {
+        const surah = surahs[currentSurah];
+        document.getElementById(
+          "surahName"
+        ).innerHTML = `<h2>${surah.name}</h2>`;
+        document.getElementById("ayah").innerHTML = surah.ayahs[currentAyah];
+      }
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        const surah = surahs[currentSurah];
+        if (currentAyah < surah.ayahs.length - 1) {
+          currentAyah++;
+        } else if (currentSurah < surahs.length - 1) {
+          currentSurah++;
+          currentAyah = 0;
+        }
+        showAyah();
+      });
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        if (currentAyah > 0) {
+          currentAyah--;
+        } else if (currentSurah > 0) {
+          currentSurah--;
+          currentAyah = surahs[currentSurah].ayahs.length - 1;
+        }
+        showAyah();
+      });
+      // Allow keyboard arrows to change ayah
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    document.getElementById("nextBtn").click();
+  } else if (event.key === "ArrowLeft") {
+    document.getElementById("prevBtn").click();
+  }
+});
+
+    </script>
+  </body>
+</html>
