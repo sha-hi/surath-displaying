@@ -1,75 +1,279 @@
-<!DOCTYPE html>
-<html lang="ml">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quran Tajweed Viewer</title>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Explorer - Juz 30</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-
-
-    <div id="surahName"></div>
-    <div id="ayah"></div>
-
-    <button id="prevBtn">Previous</button>
-    <button id="nextBtn">Next</button>
-
-    <script>
-      let surahs = [];
-      let currentSurah = 0;
-      let currentAyah = 0;
-
-      // Load ayat data from ayat.json
-      fetch("ayat.json")
-        .then((res) => res.json())
-        .then((data) => {
-          surahs = data.surahs;
-          showAyah();
-        })
-        .catch((err) => {
-          document.getElementById("ayah").innerHTML =
-            "⚠️ Error loading ayat. Please check file paths.";
-          console.error(err);
-        });
-
-      function showAyah() {
-        const surah = surahs[currentSurah];
-        document.getElementById(
-          "surahName"
-        ).innerHTML = `<h2>${surah.name}</h2>`;
-        document.getElementById("ayah").innerHTML = surah.ayahs[currentAyah];
-      }
-
-      document.getElementById("nextBtn").addEventListener("click", () => {
-        const surah = surahs[currentSurah];
-        if (currentAyah < surah.ayahs.length - 1) {
-          currentAyah++;
-        } else if (currentSurah < surahs.length - 1) {
-          currentSurah++;
-          currentAyah = 0;
-        }
-        showAyah();
-      });
-
-      document.getElementById("prevBtn").addEventListener("click", () => {
-        if (currentAyah > 0) {
-          currentAyah--;
-        } else if (currentSurah > 0) {
-          currentSurah--;
-          currentAyah = surahs[currentSurah].ayahs.length - 1;
-        }
-        showAyah();
-      });
-      // Allow keyboard arrows to change ayah
-document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowRight") {
-    document.getElementById("nextBtn").click();
-  } else if (event.key === "ArrowLeft") {
-    document.getElementById("prevBtn").click();
-  }
-});
-
-    </script>
-  </body>
+</head>
+<body>
+    <div class="background-decor"></div>
+    <div class="container">
+        <header class="header">
+            <h1>Quran Explorer</h1>
+            <p>Juz 30 (Surah 78 - 114)</p>
+        </header>
+        <div class="surah-grid">            <a href="surah-78.html" class="surah-card">
+                <div class="surah-number">78</div>
+                <div class="surah-info">
+                    <h2>An-Naba</h2>
+                    <p>The Announcement</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ النَّبَإِ</div>
+            </a>            <a href="surah-79.html" class="surah-card">
+                <div class="surah-number">79</div>
+                <div class="surah-info">
+                    <h2>An-Naazi'aat</h2>
+                    <p>Those who drag forth</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ النَّازِعَاتِ</div>
+            </a>            <a href="surah-80.html" class="surah-card">
+                <div class="surah-number">80</div>
+                <div class="surah-info">
+                    <h2>Abasa</h2>
+                    <p>He frowned</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ عَبَسَ</div>
+            </a>            <a href="surah-81.html" class="surah-card">
+                <div class="surah-number">81</div>
+                <div class="surah-info">
+                    <h2>At-Takwir</h2>
+                    <p>The Overthrowing</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ التَّكۡوِيرِ</div>
+            </a>            <a href="surah-82.html" class="surah-card">
+                <div class="surah-number">82</div>
+                <div class="surah-info">
+                    <h2>Al-Infitaar</h2>
+                    <p>The Cleaving</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الانفِطَارِ</div>
+            </a>            <a href="surah-83.html" class="surah-card">
+                <div class="surah-number">83</div>
+                <div class="surah-info">
+                    <h2>Al-Mutaffifin</h2>
+                    <p>Defrauding</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ المُطَفِّفِينَ</div>
+            </a>            <a href="surah-84.html" class="surah-card">
+                <div class="surah-number">84</div>
+                <div class="surah-info">
+                    <h2>Al-Inshiqaaq</h2>
+                    <p>The Splitting Open</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الانشِقَاقِ</div>
+            </a>            <a href="surah-85.html" class="surah-card">
+                <div class="surah-number">85</div>
+                <div class="surah-info">
+                    <h2>Al-Burooj</h2>
+                    <p>The Constellations</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ البُرُوجِ</div>
+            </a>            <a href="surah-86.html" class="surah-card">
+                <div class="surah-number">86</div>
+                <div class="surah-info">
+                    <h2>At-Taariq</h2>
+                    <p>The Morning Star</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الطَّارِقِ</div>
+            </a>            <a href="surah-87.html" class="surah-card">
+                <div class="surah-number">87</div>
+                <div class="surah-info">
+                    <h2>Al-A'laa</h2>
+                    <p>The Most High</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الأَعۡلَىٰ</div>
+            </a>            <a href="surah-88.html" class="surah-card">
+                <div class="surah-number">88</div>
+                <div class="surah-info">
+                    <h2>Al-Ghaashiya</h2>
+                    <p>The Overwhelming</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الغَاشِيَةِ</div>
+            </a>            <a href="surah-89.html" class="surah-card">
+                <div class="surah-number">89</div>
+                <div class="surah-info">
+                    <h2>Al-Fajr</h2>
+                    <p>The Dawn</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الفَجۡرِ</div>
+            </a>            <a href="surah-90.html" class="surah-card">
+                <div class="surah-number">90</div>
+                <div class="surah-info">
+                    <h2>Al-Balad</h2>
+                    <p>The City</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ البَلَدِ</div>
+            </a>            <a href="surah-91.html" class="surah-card">
+                <div class="surah-number">91</div>
+                <div class="surah-info">
+                    <h2>Ash-Shams</h2>
+                    <p>The Sun</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الشَّمۡسِ</div>
+            </a>            <a href="surah-92.html" class="surah-card">
+                <div class="surah-number">92</div>
+                <div class="surah-info">
+                    <h2>Al-Lail</h2>
+                    <p>The Night</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ اللَّيۡلِ</div>
+            </a>            <a href="surah-93.html" class="surah-card">
+                <div class="surah-number">93</div>
+                <div class="surah-info">
+                    <h2>Ad-Dhuhaa</h2>
+                    <p>The Morning Hours</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الضُّحَىٰ</div>
+            </a>            <a href="surah-94.html" class="surah-card">
+                <div class="surah-number">94</div>
+                <div class="surah-info">
+                    <h2>Ash-Sharh</h2>
+                    <p>The Consolation</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الشَّرۡحِ</div>
+            </a>            <a href="surah-95.html" class="surah-card">
+                <div class="surah-number">95</div>
+                <div class="surah-info">
+                    <h2>At-Tin</h2>
+                    <p>The Fig</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ التِّينِ</div>
+            </a>            <a href="surah-96.html" class="surah-card">
+                <div class="surah-number">96</div>
+                <div class="surah-info">
+                    <h2>Al-Alaq</h2>
+                    <p>The Clot</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ العَلَقِ</div>
+            </a>            <a href="surah-97.html" class="surah-card">
+                <div class="surah-number">97</div>
+                <div class="surah-info">
+                    <h2>Al-Qadr</h2>
+                    <p>The Power, Fate</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ القَدۡرِ</div>
+            </a>            <a href="surah-98.html" class="surah-card">
+                <div class="surah-number">98</div>
+                <div class="surah-info">
+                    <h2>Al-Bayyina</h2>
+                    <p>The Evidence</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ البَيِّنَةِ</div>
+            </a>            <a href="surah-99.html" class="surah-card">
+                <div class="surah-number">99</div>
+                <div class="surah-info">
+                    <h2>Az-Zalzala</h2>
+                    <p>The Earthquake</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الزَّلۡزَلَةِ</div>
+            </a>            <a href="surah-100.html" class="surah-card">
+                <div class="surah-number">100</div>
+                <div class="surah-info">
+                    <h2>Al-Aadiyaat</h2>
+                    <p>The Chargers</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ العَادِيَاتِ</div>
+            </a>            <a href="surah-101.html" class="surah-card">
+                <div class="surah-number">101</div>
+                <div class="surah-info">
+                    <h2>Al-Qaari'a</h2>
+                    <p>The Calamity</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ القَارِعَةِ</div>
+            </a>            <a href="surah-102.html" class="surah-card">
+                <div class="surah-number">102</div>
+                <div class="surah-info">
+                    <h2>At-Takaathur</h2>
+                    <p>Competition</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ التَّكَاثُرِ</div>
+            </a>            <a href="surah-103.html" class="surah-card">
+                <div class="surah-number">103</div>
+                <div class="surah-info">
+                    <h2>Al-Asr</h2>
+                    <p>The Declining Day, Epoch</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ العَصۡرِ</div>
+            </a>            <a href="surah-104.html" class="surah-card">
+                <div class="surah-number">104</div>
+                <div class="surah-info">
+                    <h2>Al-Humaza</h2>
+                    <p>The Traducer</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الهُمَزَةِ</div>
+            </a>            <a href="surah-105.html" class="surah-card">
+                <div class="surah-number">105</div>
+                <div class="surah-info">
+                    <h2>Al-Fil</h2>
+                    <p>The Elephant</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الفِيلِ</div>
+            </a>            <a href="surah-106.html" class="surah-card">
+                <div class="surah-number">106</div>
+                <div class="surah-info">
+                    <h2>Quraish</h2>
+                    <p>Quraysh</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ قُرَيۡشٍ</div>
+            </a>            <a href="surah-107.html" class="surah-card">
+                <div class="surah-number">107</div>
+                <div class="surah-info">
+                    <h2>Al-Maa'un</h2>
+                    <p>Almsgiving</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ المَاعُونِ</div>
+            </a>            <a href="surah-108.html" class="surah-card">
+                <div class="surah-number">108</div>
+                <div class="surah-info">
+                    <h2>Al-Kawthar</h2>
+                    <p>Abundance</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الكَوۡثَرِ</div>
+            </a>            <a href="surah-109.html" class="surah-card">
+                <div class="surah-number">109</div>
+                <div class="surah-info">
+                    <h2>Al-Kaafiroon</h2>
+                    <p>The Disbelievers</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الكَافِرُونَ</div>
+            </a>            <a href="surah-110.html" class="surah-card">
+                <div class="surah-number">110</div>
+                <div class="surah-info">
+                    <h2>An-Nasr</h2>
+                    <p>Divine Support</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ النَّصۡرِ</div>
+            </a>            <a href="surah-111.html" class="surah-card">
+                <div class="surah-number">111</div>
+                <div class="surah-info">
+                    <h2>Al-Masad</h2>
+                    <p>The Palm Fibre</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ المَسَدِ</div>
+            </a>            <a href="surah-112.html" class="surah-card">
+                <div class="surah-number">112</div>
+                <div class="surah-info">
+                    <h2>Al-Ikhlaas</h2>
+                    <p>Sincerity</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الإِخۡلَاصِ</div>
+            </a>            <a href="surah-113.html" class="surah-card">
+                <div class="surah-number">113</div>
+                <div class="surah-info">
+                    <h2>Al-Falaq</h2>
+                    <p>The Dawn</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ الفَلَقِ</div>
+            </a>            <a href="surah-114.html" class="surah-card">
+                <div class="surah-number">114</div>
+                <div class="surah-info">
+                    <h2>An-Naas</h2>
+                    <p>Mankind</p>
+                </div>
+                <div class="surah-name-arabic">سُورَةُ النَّاسِ</div>
+            </a>        </div>
+    </div>
+</body>
 </html>

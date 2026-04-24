@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سُورَةُ عَبَسَ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="surah-page">
+    <div class="background-decor"></div>
+    <div class="container">
+        <header class="surah-header">
+            <a href="index.html" class="back-btn">â† Back to Home</a>
+            <div class="surah-title-box">
+                <h2>سُورَةُ عَبَسَ</h2>
+                <p>Abasa</p>
+            </div>
+            <div class="spacer"></div>
+        </header>
+
+        <div class="ayah-display-container glass-panel">
+            <div id="ayah" class="ayah-text"></div>
+        </div>
+
+        <div class="controls-container">
+            <button id="prevBtn" class="nav-btn">Previous</button>
+            <div class="progress-indicator">
+                <span id="currentAyahNum">1</span> / 42
+            </div>
+            <button id="nextBtn" class="nav-btn">Next</button>
+        </div>
+        
+        <div class="surah-nav-links">
+            <a href="surah-79.html" class="side-nav">Previous Surah</a>
+            <a href="surah-81.html" class="side-nav">Next Surah</a>
+        </div>
+    </div>
+
+    <script>
+        const ayahs = ["بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ عَبَسَ وَتَوَلَّىٰۤ\n","أَن جَاۤءَهُ ٱلۡأَعۡمَىٰ\n","وَمَا یُدۡرِیكَ لَعَلَّهُۥ یَزَّكَّىٰۤ\n","أَوۡ یَذَّكَّرُ فَتَنفَعَهُ ٱلذِّكۡرَىٰۤ\n","أَمَّا مَنِ ٱسۡتَغۡنَىٰ\n","فَأَنتَ لَهُۥ تَصَدَّىٰ\n","وَمَا عَلَیۡكَ أَلَّا یَزَّكَّىٰ\n","وَأَمَّا مَن جَاۤءَكَ یَسۡعَىٰ\n","وَهُوَ یَخۡشَىٰ\n","فَأَنتَ عَنۡهُ تَلَهَّىٰ\n","كَلَّاۤ إِنَّهَا تَذۡكِرَةࣱ\n","فَمَن شَاۤءَ ذَكَرَهُۥ\n","فِی صُحُفࣲ مُّكَرَّمَةࣲ\n","مَّرۡفُوعَةࣲ مُّطَهَّرَةِۭ\n","بِأَیۡدِی سَفَرَةࣲ\n","كِرَامِۭ بَرَرَةࣲ\n","قُتِلَ ٱلۡإِنسَـٰنُ مَاۤ أَكۡفَرَهُۥ\n","مِنۡ أَیِّ شَیۡءٍ خَلَقَهُۥ\n","مِن نُّطۡفَةٍ خَلَقَهُۥ فَقَدَّرَهُۥ\n","ثُمَّ ٱلسَّبِیلَ یَسَّرَهُۥ\n","ثُمَّ أَمَاتَهُۥ فَأَقۡبَرَهُۥ\n","ثُمَّ إِذَا شَاۤءَ أَنشَرَهُۥ\n","كَلَّا لَمَّا یَقۡضِ مَاۤ أَمَرَهُۥ\n","فَلۡیَنظُرِ ٱلۡإِنسَـٰنُ إِلَىٰ طَعَامِهِۦۤ\n","أَنَّا صَبَبۡنَا ٱلۡمَاۤءَ صَبࣰّا\n","ثُمَّ شَقَقۡنَا ٱلۡأَرۡضَ شَقࣰّا\n","فَأَنۢبَتۡنَا فِیهَا حَبࣰّا\n","وَعِنَبࣰا وَقَضۡبࣰا\n","وَزَیۡتُونࣰا وَنَخۡلࣰا\n","وَحَدَاۤىِٕقَ غُلۡبࣰا\n","وَفَـٰكِهَةࣰ وَأَبࣰّا\n","مَّتَـٰعࣰا لَّكُمۡ وَلِأَنۡعَـٰمِكُمۡ\n","فَإِذَا جَاۤءَتِ ٱلصَّاۤخَّةُ\n","یَوۡمَ یَفِرُّ ٱلۡمَرۡءُ مِنۡ أَخِیهِ\n","وَأُمِّهِۦ وَأَبِیهِ\n","وَصَـٰحِبَتِهِۦ وَبَنِیهِ\n","لِكُلِّ ٱمۡرِئࣲ مِّنۡهُمۡ یَوۡمَىِٕذࣲ شَأۡنࣱ یُغۡنِیهِ\n","وُجُوهࣱ یَوۡمَىِٕذࣲ مُّسۡفِرَةࣱ\n","ضَاحِكَةࣱ مُّسۡتَبۡشِرَةࣱ\n","وَوُجُوهࣱ یَوۡمَىِٕذٍ عَلَیۡهَا غَبَرَةࣱ\n","تَرۡهَقُهَا قَتَرَةٌ\n","أُو۟لَـٰۤىِٕكَ هُمُ ٱلۡكَفَرَةُ ٱلۡفَجَرَةُ\n"];
+        const colors = ['#FF3366', '#20A4F3', '#FFB01A', '#2EC4B6', '#8A2BE2', '#FF0054', '#4361EE', '#4CC9F0', '#F72585', '#7209B7'];
+        let currentAyah = 0;
+
+        function showAyah() {
+            const text = ayahs[currentAyah];
+            let words = text.split(' ');
+            let coloredHtml = '';
+            words.forEach((word, index) => {
+                if (!word.trim()) return;
+                const color = colors[index % colors.length];
+                coloredHtml += '<span class="word" style="color: ' + color + ';">' + word + '</span> ';
+            });
+            
+            const ayahEl = document.getElementById("ayah");
+            ayahEl.style.opacity = 0;
+            ayahEl.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                ayahEl.innerHTML = coloredHtml;
+                ayahEl.style.opacity = 1;
+                ayahEl.style.transform = 'translateY(0)';
+                document.getElementById("currentAyahNum").innerText = currentAyah + 1;
+            }, 200);
+        }
+
+        document.getElementById("nextBtn").addEventListener("click", () => {
+            if (currentAyah < ayahs.length - 1) {
+                currentAyah++;
+                showAyah();
+            } else {
+                window.location.href = 'surah-81.html';
+            }
+        });
+
+        document.getElementById("prevBtn").addEventListener("click", () => {
+            if (currentAyah > 0) {
+                currentAyah--;
+                showAyah();
+            } else {
+                window.location.href = 'surah-79.html';
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowRight") {
+                document.getElementById("prevBtn").click();
+            } else if (event.key === "ArrowLeft") {
+                document.getElementById("nextBtn").click();
+            }
+        });
+
+        setTimeout(showAyah, 100);
+    </script>
+</body>
+</html>

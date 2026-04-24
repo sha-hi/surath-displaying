@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سُورَةُ الغَاشِيَةِ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="surah-page">
+    <div class="background-decor"></div>
+    <div class="container">
+        <header class="surah-header">
+            <a href="index.html" class="back-btn">â† Back to Home</a>
+            <div class="surah-title-box">
+                <h2>سُورَةُ الغَاشِيَةِ</h2>
+                <p>Al-Ghaashiya</p>
+            </div>
+            <div class="spacer"></div>
+        </header>
+
+        <div class="ayah-display-container glass-panel">
+            <div id="ayah" class="ayah-text"></div>
+        </div>
+
+        <div class="controls-container">
+            <button id="prevBtn" class="nav-btn">Previous</button>
+            <div class="progress-indicator">
+                <span id="currentAyahNum">1</span> / 26
+            </div>
+            <button id="nextBtn" class="nav-btn">Next</button>
+        </div>
+        
+        <div class="surah-nav-links">
+            <a href="surah-87.html" class="side-nav">Previous Surah</a>
+            <a href="surah-89.html" class="side-nav">Next Surah</a>
+        </div>
+    </div>
+
+    <script>
+        const ayahs = ["بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ هَلۡ أَتَىٰكَ حَدِیثُ ٱلۡغَـٰشِیَةِ\n","وُجُوهࣱ یَوۡمَىِٕذٍ خَـٰشِعَةٌ\n","عَامِلَةࣱ نَّاصِبَةࣱ\n","تَصۡلَىٰ نَارًا حَامِیَةࣰ\n","تُسۡقَىٰ مِنۡ عَیۡنٍ ءَانِیَةࣲ\n","لَّیۡسَ لَهُمۡ طَعَامٌ إِلَّا مِن ضَرِیعࣲ\n","لَّا یُسۡمِنُ وَلَا یُغۡنِی مِن جُوعࣲ\n","وُجُوهࣱ یَوۡمَىِٕذࣲ نَّاعِمَةࣱ\n","لِّسَعۡیِهَا رَاضِیَةࣱ\n","فِی جَنَّةٍ عَالِیَةࣲ\n","لَّا تَسۡمَعُ فِیهَا لَـٰغِیَةࣰ\n","فِیهَا عَیۡنࣱ جَارِیَةࣱ\n","فِیهَا سُرُرࣱ مَّرۡفُوعَةࣱ\n","وَأَكۡوَابࣱ مَّوۡضُوعَةࣱ\n","وَنَمَارِقُ مَصۡفُوفَةࣱ\n","وَزَرَابِیُّ مَبۡثُوثَةٌ\n","أَفَلَا یَنظُرُونَ إِلَى ٱلۡإِبِلِ كَیۡفَ خُلِقَتۡ\n","وَإِلَى ٱلسَّمَاۤءِ كَیۡفَ رُفِعَتۡ\n","وَإِلَى ٱلۡجِبَالِ كَیۡفَ نُصِبَتۡ\n","وَإِلَى ٱلۡأَرۡضِ كَیۡفَ سُطِحَتۡ\n","فَذَكِّرۡ إِنَّمَاۤ أَنتَ مُذَكِّرࣱ\n","لَّسۡتَ عَلَیۡهِم بِمُصَیۡطِرٍ\n","إِلَّا مَن تَوَلَّىٰ وَكَفَرَ\n","فَیُعَذِّبُهُ ٱللَّهُ ٱلۡعَذَابَ ٱلۡأَكۡبَرَ\n","إِنَّ إِلَیۡنَاۤ إِیَابَهُمۡ\n","ثُمَّ إِنَّ عَلَیۡنَا حِسَابَهُم\n"];
+        const colors = ['#FF3366', '#20A4F3', '#FFB01A', '#2EC4B6', '#8A2BE2', '#FF0054', '#4361EE', '#4CC9F0', '#F72585', '#7209B7'];
+        let currentAyah = 0;
+
+        function showAyah() {
+            const text = ayahs[currentAyah];
+            let words = text.split(' ');
+            let coloredHtml = '';
+            words.forEach((word, index) => {
+                if (!word.trim()) return;
+                const color = colors[index % colors.length];
+                coloredHtml += '<span class="word" style="color: ' + color + ';">' + word + '</span> ';
+            });
+            
+            const ayahEl = document.getElementById("ayah");
+            ayahEl.style.opacity = 0;
+            ayahEl.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                ayahEl.innerHTML = coloredHtml;
+                ayahEl.style.opacity = 1;
+                ayahEl.style.transform = 'translateY(0)';
+                document.getElementById("currentAyahNum").innerText = currentAyah + 1;
+            }, 200);
+        }
+
+        document.getElementById("nextBtn").addEventListener("click", () => {
+            if (currentAyah < ayahs.length - 1) {
+                currentAyah++;
+                showAyah();
+            } else {
+                window.location.href = 'surah-89.html';
+            }
+        });
+
+        document.getElementById("prevBtn").addEventListener("click", () => {
+            if (currentAyah > 0) {
+                currentAyah--;
+                showAyah();
+            } else {
+                window.location.href = 'surah-87.html';
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowRight") {
+                document.getElementById("prevBtn").click();
+            } else if (event.key === "ArrowLeft") {
+                document.getElementById("nextBtn").click();
+            }
+        });
+
+        setTimeout(showAyah, 100);
+    </script>
+</body>
+</html>
